@@ -70,12 +70,12 @@
 
   const removePlayingClass = (e) => {
     if (e.propertyName == 'transform') {
-      key.classList.remove("playing");
+      e.target.classList.remove("playing");
     }
   };
 
   keys = document.querySelectorAll(".key");
-  keys.forEach((key) => key.addEventListener("transitionend", removePlayingClass));
+  keys.forEach( key => key.addEventListener("transitionend", removePlayingClass));
   window.addEventListener("keydown", playSound);
 </script>
 
