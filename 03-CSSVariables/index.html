@@ -41,6 +41,11 @@
       margin-bottom: 50px;
     }
 
+    a {
+      color: var(--base);
+      text-decoration: none;
+    }
+
     input {
       width: 100px;
     }
@@ -59,6 +64,17 @@
   </style>
 
   <script>
+    const inputs = document.querySelectorAll('.controls input');
+
+    const handleChange = (e) => {
+      const suffix = e.currentTarget.dataset.sizing || '';
+      const name = e.currentTarget.name;
+      const value = e.currentTarget.value + suffix;
+      document.documentElement.style.setProperty(`--${name}`, value);
+    };
+
+    inputs.forEach(input => input.addEventListener('change', handleChange));
+    inputs.forEach(input => input.addEventListener('mousemove', handleChange));
   </script>
 
 </body>
