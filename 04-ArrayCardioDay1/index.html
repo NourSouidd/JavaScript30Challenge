@@ -51,7 +51,7 @@
       const last = a.year;
       const next = b.year;
       return last > next ? 1 : -1;
-    }
+    };
     age = inventors.sort(compareAge);
     // console.table(age);
     // Array.prototype.reduce()
@@ -76,6 +76,13 @@
                     .filter(s => s.includes('de'));
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+    const compareName = (a, b) => {
+      const last = a.split(',')[1];
+      const next = b.split(',')[1];
+      return last > next ? 1 : -1;
+    };
+    const name = people.sort(compareName);
+    // console.log(name);
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
