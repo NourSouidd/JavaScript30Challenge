@@ -61,8 +61,10 @@
 
   slider.addEventListener('mousemove', (e) => {
     if(!isDown) return;
-    console.count(isDown);
     e.preventDefault();
+    const x = e.pageX - slider.offsetLeft;
+    const step = (x - startX) * 3;
+    slider.scrollLeft = scrollLeft - step;
   });
 
 </script>
