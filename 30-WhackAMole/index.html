@@ -39,12 +39,14 @@
 
   let lastHole;
   let timeUp = false;
+  let score = 0;
 
   function randomTime(min, max) {
     return Math.round(Math.random() * (max - min) + min);
   }
 
   function randomHole(holes) {
+    // floor returns the largest integer less than or equal to a given number
     const index = Math.floor(Math.random() * holes.length);
     const hole = holes[index];
     if (hole === lastHole) {
@@ -71,6 +73,15 @@
     peep();
     setTimeout(() => timeUp = true, 10000)
   }
+
+  function bonk(e) {
+    if(!e.isTrusted) return;
+    score++;
+    this.parentNode.classList.remove('up');
+    scoreBoard.textContent = score;
+  }
+
+  moles.forEach(mole => mole.addEventListener('click', bonk));
 
 </script>
 </body>
